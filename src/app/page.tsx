@@ -1,8 +1,10 @@
-import { Button } from "@/components/ui/button";
-const Page = () => {
+
+const Page = async () => {
+
+
   return (
     <div>
-      <Button variant="ghost">click me</Button>
+      hii
     </div>
   );
 }
