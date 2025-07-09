@@ -18,8 +18,6 @@ const Page = () => {
       toast.error(error.message);
     },
     onSuccess : (data) => {
-      console.log(`/projects/${data.id}`);
-      toast.success("project id : ");
       router.push(`/projects/${data.id}`);
     }
   }));
