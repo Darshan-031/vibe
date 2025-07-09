@@ -1,27 +1,42 @@
 "use client";
 
-import { Suspense } from "react";
+import { Fragement } from "@/generated/prisma";
+import { Suspense, useState } from "react";
 import { MessagesContainer } from "../components/message-container";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
+import { ProjectHeader } from "../components/project-header";
 
 interface Props {
     projectId : string,
 }
 
 export const ProjectView = ({ projectId } : Props) => {
+      const [activeFragment, setActiveFragment] = useState<Fragement | null>(null);
+
       return (
         <div className="h-screen">
-            <ResizablePanelGroup direction="horizontal">
-                <ResizablePanel defaultSize={35} minSize={20} className="flex flex-col min-h-0">
-                    <Suspense fallback={<p>Loading messages...</p>}>  
-                        <MessagesContainer projectId={projectId} />
-                    </Suspense>
-                </ResizablePanel>
-                <ResizableHandle withHandle/>
-                <ResizablePanel defaultSize={65} minSize={50} >
-                    TODO : preview of website
-                </ResizablePanel>
-            </ResizablePanelGroup>
+          <ResizablePanelGroup direction="horizontal">
+            <ResizablePanel
+              defaultSize={35}
+              minSize={20}
+              className="flex flex-col min-h-0"
+            >
+                <Suspense fallback={<p>Loading project...</p>}>
+                    <ProjectHeader projectId={projectId} />
+                </Suspense>
+              <Suspense fallback={<p>Loading messages...</p>}>
+                <MessagesContainer
+                  projectId={projectId}
+                  activeFragment={activeFragment}
+                  setActiveFragment={setActiveFragment}
+                />
+              </Suspense>
+            </ResizablePanel>
+            <ResizableHandle withHandle />
+            <ResizablePanel defaultSize={65} minSize={50}>
+              TODO : preview of website
+            </ResizablePanel>
+          </ResizablePanelGroup>
         </div>
       );
 };

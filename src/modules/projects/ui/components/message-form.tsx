@@ -23,11 +23,10 @@ const formSchema = z.object({
     .max(10000, { message: "Value is too long" }),
 })
 
-
-
 export const MessageForm = ({projectId} : Props) => {
     const trpc = useTRPC();
     const queryClient = useQueryClient();
+    //creating a form using useForm from react-hook-form
     const form = useForm<z.infer<typeof formSchema>>({
         resolver : zodResolver(formSchema),
         defaultValues: {
@@ -35,6 +34,7 @@ export const MessageForm = ({projectId} : Props) => {
         },
     })
     
+    //create message function
     const createMessage = useMutation(trpc.messages.create.mutationOptions({
         onSuccess : () => {
             form.reset();
@@ -47,7 +47,7 @@ export const MessageForm = ({projectId} : Props) => {
             //TODO : redirect to pricing page if specific error
             toast.error(error.message)
         }
-    }))
+    }));
     
     const onSubmit = async (values : z.infer<typeof formSchema>) => {
         await createMessage.mutateAsync({

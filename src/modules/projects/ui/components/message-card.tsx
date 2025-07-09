@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { ChevronRightIcon, Code2Icon } from "lucide-react";
 
+
+//user message component
 interface UserMessageProps {
     content : string;
 }
@@ -19,6 +21,7 @@ const UserMessage = ({content} : UserMessageProps) => {
     )
 }
 
+//fragment card component
 interface FragmentCardProps {
   fragement: Fragement;
   isActiveFragment: boolean;
@@ -53,6 +56,7 @@ const FragmentCard = ({
   );
 };
 
+//Assistant message component
 interface AssistantMessageProps {
   content: string;
   fragement: Fragement | null;
