@@ -19,7 +19,7 @@ export const MessagesContainer = ({ projectId }: Props) => {
 
   useEffect(() => {
     const lastAssistantMessage = messages.findLast(
-      (messages) => messages.role === "ASSISTANT",
+      (message) => message.role === "ASSISTANT",
     );
 
     if(lastAssistantMessage){
