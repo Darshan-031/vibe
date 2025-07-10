@@ -17,8 +17,9 @@ export const MessagesContainer = ({
   activeFragment,
   setActiveFragment,
 }: Props) => {
-  const bottomRef = useRef<HTMLDivElement>(null);
   const trpc = useTRPC();
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const lastAssistantMessageRef = useRef<string | null>(null);
 
   //get all the messages
   const { data: messages } = useSuspenseQuery(
@@ -31,16 +32,20 @@ export const MessagesContainer = ({
   );
 
 
-  //selects last message with fragment and highlight fragment : TODO causing problem
-  // useEffect(() => {
-  //   const lastAssistantMessageWithFragment = messages.findLast(
-  //     (message) => message.role === "ASSISTANT" && !!message.fragement,
-  //   );
+  //selects last message with fragment and highlight fragment        
+  useEffect(() => {
+    const lastAssistantMessageWithFragment = messages.findLast(
+      (message) => message.role === "ASSISTANT",
+    );
 
-  //   if (lastAssistantMessageWithFragment) {
-  //     setActiveFragment(lastAssistantMessageWithFragment.fragement);
-  //   }
-  // }, [messages, setActiveFragment]);
+    if (
+      lastAssistantMessageWithFragment?.fragement &&
+      lastAssistantMessageWithFragment.id !== lastAssistantMessageRef.current
+    ) {
+      setActiveFragment(lastAssistantMessageWithFragment.fragement);
+      lastAssistantMessageRef.current = lastAssistantMessageWithFragment.id;
+    }
+  }, [messages, setActiveFragment]);
 
   //scrolls to bottom when new message appears
   useEffect(() => {
