@@ -10,6 +10,7 @@ import { FileExplorer } from "@/components/file-explorer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+import { UserControl } from "@/components/user-conrol";
 import { FragmentWeb } from "../components/fragment-web";
 import { ProjectHeader } from "../components/project-header";
 import { MessagesContainer } from "../components/message-container";
@@ -69,6 +70,7 @@ export const ProjectView = ({ projectId } : Props) => {
                         Upgrede
                       </Link>
                     </Button>
+                    <UserControl />
                   </div>
                 </div>
                 <TabsContent value="preview">

@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { toast } from "sonner";
 import { useState } from "react";
+import { useClerk } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,8 +25,9 @@ const formSchema = z.object({
 });
 
 export const ProjectForm = () => {
-    const router = useRouter();
+  const router = useRouter();
   const trpc = useTRPC();
+  const clerk = useClerk();
   const queryClient = useQueryClient();
   //creating a form using useForm from react-hook-form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -46,8 +48,10 @@ export const ProjectForm = () => {
         //TODO : Invalidate usages status
       },
       onError: (error) => {
-        //TODO : redirect to pricing page if specific error
         toast.error(error.message);
+        if(error.data?.code === "UNAUTHORIZED"){
+          clerk.openSignIn();
+        }
       },
     })
   );
