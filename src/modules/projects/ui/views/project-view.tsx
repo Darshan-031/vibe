@@ -5,10 +5,8 @@ import { Suspense, useState } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
-import { CodeIcon, CrownIcon, EyeIcon } from "lucide-react";
+import { CodeIcon, EyeIcon } from "lucide-react";
 import { FileExplorer } from "@/components/file-explorer";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 import { UserControl } from "@/components/user-conrol";
 import { FragmentWeb } from "../components/fragment-web";
@@ -64,12 +62,12 @@ export const ProjectView = ({ projectId } : Props) => {
                     </TabsTrigger>
                   </TabsList>
                   <div className="ml-auto flex items-center gap-x-2">
-                    <Button asChild size="sm" variant="tertiary">
+                    {/* <Button asChild size="sm" variant="tertiary">
                       <Link href="/pricing">
                         <CrownIcon />
                         Upgrede
                       </Link>
-                    </Button>
+                    </Button> */}
                     <UserControl />
                   </div>
                 </div>
