@@ -18,7 +18,7 @@ export const UserControl = ({showName} : Props) => {
           elements: {
             userButtonBox: "rounded-full!",
             userButtonAvatarBox: "rounded-full! size-8!",
-            userButtonTrigger: "reunded-full!"
+            userButtonTrigger: "rounded-full!"
           },
         baseTheme : currentTheme === "dark" ? dark : undefined,
         }}
