@@ -5,6 +5,7 @@ import {inngest} from "./client";
 import { getSandbox, lastAssistentTextMessageContent, parseAgentOutput } from "./utils";
 import { FRAGMENT_TITLE_PROMPT, PROMPT, RESPONSE_PROMPT } from "@/prompt";
 import { prisma } from "@/lib/db";
+import { SANDBOX_TIMEOUT } from "./types";
 
 interface AgentState {
   summary : string
@@ -21,6 +22,7 @@ export const codeAgentFunction =  inngest.createFunction(
     //getting sandbox id
     const sandboxId = await step.run("get-sandbox-id", async () => {
       const sandbox = await Sandbox.create("darshan-vibe-nextjs");
+      await sandbox.setTimeout(SANDBOX_TIMEOUT);
       return sandbox.sandboxId;
     });
 
@@ -32,8 +34,9 @@ export const codeAgentFunction =  inngest.createFunction(
           projectId: event.data.projectId,
         },
         orderBy: {
-          createdAt: "asc", //change to asc if ai does not understand latest message
+          createdAt: "desc", //change to asc if ai does not understand latest message
         },
+        take: 5,
       });
       for(const message of messages){
         formattedMessages.push({
@@ -43,7 +46,7 @@ export const codeAgentFunction =  inngest.createFunction(
         })
       }
 
-      return formattedMessages;
+      return formattedMessages.reverse();
     });
 
     const state = createState<AgentState>(
@@ -241,7 +244,7 @@ export const codeAgentFunction =  inngest.createFunction(
           content: parseAgentOutput(responseOutput),
           role: "ASSISTANT",
           type: "RESULT",
-          fragment: {
+          fragement: {
             create: {
               sandboxUrl: sandboxUrl,
               title: parseAgentOutput(fragmentTitleOutput),
