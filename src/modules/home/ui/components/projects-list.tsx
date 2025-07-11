@@ -39,7 +39,7 @@ export const ProjectsList = ()=>{
                             <div>
                                 <Image 
                                     src="logo.svg"
-                                    alt="Vibe"
+                                    alt="Nova"
                                     width={32}
                                     height={32}
                                     className="object-contain"

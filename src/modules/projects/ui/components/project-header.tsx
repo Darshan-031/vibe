@@ -24,7 +24,7 @@ export const ProjectHeader = ({projectId} : Props) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="sm">
-              <Image src="/logo.svg" alt="Vibe" width={18} height={18} />
+              <Image src="/logo.svg" alt="Nova" width={18} height={18} />
               <span className="text-sm font-medium">{project.name}</span>
               <ChevronDownIcon />
             </Button>

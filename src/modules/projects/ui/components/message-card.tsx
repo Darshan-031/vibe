@@ -84,12 +84,12 @@ const AssistantMessage = ({
         <div className="flex items-center gap-2 pl-2 mb-2">
           <Image
             src="/logo.svg"
-            alt="Vibe"
+            alt="Nova"
             width={18}
             height={18}
             className="shrink-0"
           />
-          <span className="tex-sm font-medium">Vibe</span>
+          <span className="tex-sm font-medium">Nova</span>
           <span className="tex-xm text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
             {format(createdAt, "HH:mm 'on' MMM dd, yyyy")}
           </span>
