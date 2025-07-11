@@ -25,7 +25,7 @@ export function lastAssistentTextMessageContent(result : AgentResult){
 export const parseAgentOutput = (value: Message[]) => {
   const output = value[0];
   if (output.type !== "text") {
-    return "Her you go.";
+    return "Here you go.";
   }
   if (Array.isArray(output.content))
     return output.content.map((txt) => txt).join("");
