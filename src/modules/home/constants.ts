@@ -1,33 +1,33 @@
 export const PROJECT_TEMPLATES = [
   {
-    emoji: "🎬",
-    title: "Build a Netflix clone",
+    emoji: "🎮",
+    title: "Build a Tic Tac Toe Game",
     prompt:
-      "Build a Netflix-style homepage with a hero banner (use a nice, dark-mode compatible gradient here), movie sections, responsive cards, and a modal for viewing details using mock data and local state. Use dark mode.",
+      "Build a 3x3 Tic Tac Toe game with a scoreboard that tracks wins, losses, and draws. Two-player mode with reset and play again buttons.",
   },
   {
     emoji: "📦",
-    title: "Build an admin dashboard",
+    title: "Build a landing page",
     prompt:
-      "Create an admin dashboard with a sidebar, stat cards, a chart placeholder, and a basic table with filter and pagination using local state. Use clear visual grouping and balance in your design for a modern, professional look.",
+      "Build a clean and modern landing page for a product. Include a hero section with a headline and call-to-action button, a features section with icons, a testimonials section, and a footer with contact details.",
   },
   {
     emoji: "📋",
     title: "Build a kanban board",
     prompt:
-      "Build a kanban board with drag-and-drop using react-beautiful-dnd and support for adding and removing tasks with local state. Use consistent spacing, column widths, and hover effects for a polished UI.",
+      "Build a Kanban board with drag-and-drop to move cards between columns. Include add/edit/delete card actions and visual highlights when dragging. Preserve card order within each column.",
   },
   {
     emoji: "🗂️",
     title: "Build a file manager",
     prompt:
-      "Build a file manager with folder list, file grid, and options to rename or delete items using mock data and local state. Focus on spacing, clear icons, and visual distinction between folders and files.",
+      "Build a file manager with a list of files and folders. Allow users to create, rename, and delete files/folders.",
   },
   {
-    emoji: "📺",
-    title: "Build a YouTube clone",
+    emoji: "🎮",
+    title: "Rock-Paper-Scissors",
     prompt:
-      "Build a YouTube-style homepage with mock video thumbnails, a category sidebar, and a modal preview with title and description using local state. Ensure clean alignment and a well-organized grid layout.",
+      "Build a Rock-Paper-Scissors game with a scoreboard showing player and computer scores. First to reach 5 points wins the match.",
   },
   {
     emoji: "🛍️",
@@ -36,15 +36,9 @@ export const PROJECT_TEMPLATES = [
       "Build a store page with category filters, a product grid, and local cart logic to add and remove items. Focus on clear typography, spacing, and button states for a great e-commerce UI.",
   },
   {
-    emoji: "🏡",
-    title: "Build an Airbnb clone",
-    prompt:
-      "Build an Airbnb-style listings grid with mock data, filter sidebar, and a modal with property details using local state. Use card spacing, soft shadows, and clean layout for a welcoming design.",
-  },
-  {
     emoji: "🎵",
     title: "Build a Spotify clone",
     prompt:
-      "Build a Spotify-style music player with a sidebar for playlists, a main area for song details, and playback controls. Use local state for managing playback and song selection. Prioritize layout balance and intuitive control placement for a smooth user experience. Use dark mode.",
+      "A music streaming web app with a list of songs, play/pause controls, and a progress bar. Include album art and song title display.",
   },
 ] as const;
